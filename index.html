@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ZICKOH｜好きなものを、形に。オリジナルプロダクトとオーダーメイドガラスマウスパッド。">
+<title>ZICKOH | 好きを形にする</title>
+<style>
+  :root{
+    --ink:#111318;
+    --muted:#70747d;
+    --line:#e8e9ed;
+    --paper:#f7f8fa;
+    --white:#fff;
+    --accent:#8b5cf6;
+    --accent2:#f97316;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    color:var(--ink);
+    background:var(--paper);
+    font-family:Arial,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font:inherit}
+  .noise{
+    position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  }
+  .orb{position:fixed;border-radius:50%;filter:blur(70px);z-index:-2;pointer-events:none}
+  .orb.a{width:420px;height:420px;right:-150px;top:80px;background:#c4b5fd;opacity:.32}
+  .orb.b{width:360px;height:360px;left:-180px;top:620px;background:#bfdbfe;opacity:.3}
+
+  .wrap{width:min(1160px,calc(100% - 48px));margin:auto}
+  header{
+    position:sticky;top:0;z-index:20;
+    border-bottom:1px solid rgba(232,233,237,.75);
+    background:rgba(247,248,250,.78);
+    backdrop-filter:blur(18px);
+  }
+  .nav{height:78px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em}
+  .brand-mark{
+    width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+    background:var(--ink);color:#fff;font-size:12px;
+  }
+  .brand span{font-size:20px}
+  nav{display:flex;align-items:center;gap:30px}
+  nav a{font-size:12px;color:#5e626b;transition:.2s}
+  nav a:hover{color:var(--ink)}
+  .nav-cta{padding:11px 17px;border-radius:999px;background:var(--ink);color:#fff!important;font-weight:700}
+
+  .hero{min-height:calc(100vh - 78px);display:grid;align-items:center;padding:82px 0 100px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#969aa3;font-weight:700}
+  h1{
+    margin:18px 0 25px;font-size:clamp(52px,7.2vw,96px);line-height:.98;
+    letter-spacing:-.065em;
+  }
+  .gradient{
+    color:transparent;
+    background:linear-gradient(100deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;background-clip:text;
+  }
+  .hero-copy{max-width:650px;color:var(--muted);font-size:15px;line-height:2}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:14px;
+    min-height:52px;padding:0 24px;border-radius:999px;font-size:13px;font-weight:700;
+    transition:transform .2s,box-shadow .2s,background .2s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-dark{background:var(--ink);color:#fff;box-shadow:0 14px 30px rgba(17,19,24,.14)}
+  .btn-light{background:#fff;border:1px solid var(--line)}
+  .hero-note{margin-top:16px;font-size:11px;color:#a0a4ac}
+
+  .visual{
+    position:relative;aspect-ratio:1;min-height:460px;
+    display:grid;place-items:center;
+  }
+  .glass{
+    width:82%;aspect-ratio:1.14;border-radius:28px;
+    transform:rotate(-7deg);
+    background:
+      radial-gradient(circle at 25% 22%,rgba(255,255,255,.95),transparent 26%),
+      linear-gradient(135deg,rgba(255,255,255,.82),rgba(226,232,240,.32));
+    border:1px solid rgba(255,255,255,.95);
+    box-shadow:0 35px 80px rgba(31,41,55,.15),inset 0 0 0 1px rgba(255,255,255,.6);
+    backdrop-filter:blur(8px);
+    position:relative;overflow:hidden;
+  }
+  .glass:before{
+    content:"";position:absolute;inset:8%;border-radius:19px;
+    background:
+      radial-gradient(circle at 72% 25%,rgba(249,115,22,.8),transparent 18%),
+      radial-gradient(circle at 30% 72%,rgba(139,92,246,.8),transparent 22%),
+      linear-gradient(135deg,#171923,#34364a 45%,#111318);
+    opacity:.9;
+  }
+  .glass:after{
+    content:"ZICKOH";position:absolute;right:10%;bottom:10%;
+    color:rgba(255,255,255,.7);font-size:12px;letter-spacing:.2em;font-weight:800;
+  }
+  .floating-label{
+    position:absolute;padding:12px 16px;border:1px solid rgba(255,255,255,.8);
+    background:rgba(255,255,255,.84);backdrop-filter:blur(14px);border-radius:14px;
+    font-size:10px;letter-spacing:.12em;box-shadow:0 14px 35px rgba(31,41,55,.1)
+  }
+  .label-one{top:14%;right:3%}.label-two{bottom:13%;left:2%}
+
+  section{padding:110px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}
+  .section-head h2{margin:10px 0 0;font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-.055em}
+  .section-head p{max-width:450px;margin:0;color:var(--muted);font-size:13px;line-height:1.9}
+
+  .routes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .route{
+    min-height:430px;padding:34px;border-radius:30px;border:1px solid var(--line);
+    background:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;
+    justify-content:space-between;transition:transform .25s,box-shadow .25s;
+  }
+  .route:hover{transform:translateY(-5px);box-shadow:0 25px 60px rgba(31,41,55,.08)}
+  .route-dark{background:#111318;color:#fff;border-color:#111318}
+  .route-label{font-size:10px;letter-spacing:.2em;color:#969aa3;font-weight:700}
+  .route h3{font-size:34px;line-height:1.12;letter-spacing:-.04em;margin:14px 0}
+  .route p{max-width:470px;color:#70747d;line-height:1.9;font-size:13px}
+  .route-dark p{color:#b7bbc3}
+  .route-btn{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;margin-top:22px}
+  .arrow{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#f0f1f4;color:#111318}
+  .route-dark .arrow{background:#fff}
+  .route-art{position:absolute;right:-80px;bottom:-90px;width:310px;height:310px;border-radius:50%;background:linear-gradient(135deg,#dbeafe,#ede9fe);opacity:.8}
+  .route-dark .route-art{background:linear-gradient(135deg,#7c3aed,#f97316);opacity:.42}
+  .route-art:after{content:"";position:absolute;width:210px;height:150px;border-radius:20px;left:45px;top:70px;transform:rotate(-14deg);background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7)}
+
+  .products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .product{
+    min-height:350px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;
+    display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  }
+  .product-image{
+    height:215px;border-radius:17px;position:relative;display:grid;place-items:center;overflow:hidden;
+    background:linear-gradient(135deg,#f1f5f9,#ede9fe);
+  }
+  .product-image .mini-glass{
+    width:72%;aspect-ratio:1.12;border-radius:15px;transform:rotate(-8deg);
+    background:linear-gradient(135deg,#20212a,#575b73);box-shadow:0 22px 35px rgba(17,19,24,.18);
+    position:relative;
+  }
+  .mini-glass:after{content:"YOUR DESIGN";position:absolute;left:18%;top:45%;font-size:10px;color:#fff;letter-spacing:.16em;opacity:.7}
+  .product:nth-child(2) .product-image{background:linear-gradient(135deg,#fff7ed,#ffedd5)}
+  .product:nth-child(2) .mini-glass{background:linear-gradient(135deg,#15161b,#f97316)}
+  .product:nth-child(3) .product-image{background:linear-gradient(135deg,#eef2ff,#f5f3ff)}
+  .product-info{padding-top:20px}
+  .product-tag{font-size:9px;letter-spacing:.18em;color:#9aa0a9}
+  .product h3{margin:8px 0 6px;font-size:19px;letter-spacing:-.03em}
+  .product p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
+  .product-link{margin-top:15px;display:inline-block;font-size:11px;font-weight:700}
+
+  .story{background:#111318;color:#fff}
+  .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+  .story h2{font-size:clamp(38px,5vw,62px);line-height:1;letter-spacing:-.06em;margin:15px 0 24px}
+  .story p{color:#b8bbc2;font-size:14px;line-height:2}
+  .story-card{
+    min-height:380px;border-radius:28px;padding:35px;display:flex;flex-direction:column;justify-content:space-between;
+    background:linear-gradient(135deg,#1b1d25,#292b37);border:1px solid rgba(255,255,255,.1);
+  }
+  .story-big{font-size:clamp(42px,6vw,78px);line-height:.95;letter-spacing:-.07em}
+  .story-small{color:#9ca0a8;font-size:11px;line-height:1.8}
+
+  .final{
+    text-align:center;padding:130px 0 140px;
+  }
+  .final h2{font-size:clamp(42px,6vw,76px);letter-spacing:-.065em;line-height:1;margin:15px 0 20px}
+  .final p{color:var(--muted);font-size:14px;line-height:1.9}
+  .final-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:32px}
+
+  footer{border-top:1px solid var(--line);padding:35px 0 28px;background:#fff}
+  .footer-top{display:flex;justify-content:space-between;gap:30px}
+  .footer-brand p{color:#92969e;font-size:11px;line-height:1.8}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+  .footer-links a{font-size:11px;color:#6f737b}
+  .copy{border-top:1px solid var(--line);margin-top:28px;padding-top:18px;color:#a2a5ac;font-size:10px}
+
+  @media(max-width:800px){
+    .wrap{width:min(100% - 32px,1160px)}
+    nav a:not(.nav-cta){display:none}
+    .hero{padding:65px 0 75px}
+    .hero-grid,.story-grid{grid-template-columns:1fr;gap:45px}
+    .visual{min-height:360px}
+    .glass{width:82%}
+    section{padding:80px 0}
+    .section-head{display:block}
+    .section-head p{margin-top:20px}
+    .routes,.products{grid-template-columns:1fr}
+    .route{min-height:370px}
+    .products .product{min-height:330px}
+    .footer-top{display:block}
+    .footer-links{justify-content:flex-start;margin-top:22px}
+  }
+</style>
+<style>
+/* Unified top layout, based on the main page. */
+body > header {
+  display:block; min-height:0; padding:0; text-align:left;
+  position:sticky; top:0; z-index:50;
+  border-bottom:1px solid rgba(232,233,237,.75);
+  background:rgba(247,248,250,.78); backdrop-filter:blur(18px);
+}
+body > header > .nav, body > header > .site-nav {
+  width:min(1160px,calc(100% - 48px)); height:78px; margin:auto;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+body > header .brand, body > header .site-brand {
+  display:flex; align-items:center; gap:11px; flex-shrink:0;
+  font-weight:800; letter-spacing:-.03em; line-height:normal;
+}
+body > header .brand > span:last-child, body > header .site-brand > span:last-child {font-size:20px;}
+body > header .brand-mark, body > header .site-brand-mark {
+  width:34px; height:34px; border-radius:11px; display:grid; place-items:center;
+  background:#111318; color:#fff; font-size:12px;
+}
+body > header nav {
+  display:flex; align-items:center; justify-content:space-between; gap:30px; padding:0;
+}
+body > header nav a {
+  font-size:12px; letter-spacing:normal; line-height:normal;
+  color:#5e626b!important; transition:color .2s;
+}
+body > header nav a:hover {color:#111318!important; opacity:1; transform:none;}
+body > header nav .nav-cta, body > header nav .site-nav-cta {
+  padding:11px 17px; border-radius:999px; background:#111318;
+  color:#fff!important; font-size:12px; font-weight:700; white-space:nowrap;
+}
+.hero, .order-page-hero {min-height:calc(100vh - 79px); padding:82px 0 100px;}
+.order-page-hero {
+  width:min(1160px,calc(100% - 48px)); margin:auto;
+  align-items:flex-start; text-align:left;
+}
+.hero h1, .order-page-hero h2 {
+  margin:18px 0 25px; font-size:clamp(52px,7.2vw,96px);
+  line-height:.98; letter-spacing:-.065em; font-weight:700;
+  overflow-wrap:anywhere;
+}
+.order-page-hero p {max-width:650px; margin:15px 0; color:#70747d; font-size:15px; line-height:2;}
+.order-page-hero .hero-note {color:#70747d; font-size:15px;}
+.order-page-hero .eyebrow {font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#969aa3; font-weight:700;}
+.order-page-hero .hero-button {min-height:52px; padding:0 24px; display:inline-flex; align-items:center; justify-content:center; gap:14px; font-size:13px; font-weight:700; margin-top:34px;}
+@media(max-width:800px) {
+  body > header > .nav, body > header > .site-nav {width:calc(100% - 32px); height:78px;}
+  body > header nav {gap:12px;}
+  body > header nav a:not(.nav-cta):not(.site-nav-cta) {display:none;}
+  .hero, .order-page-hero {padding:65px 0 75px;}
+  .order-page-hero {width:calc(100% - 32px);}
+  .hero h1, .order-page-hero h2 {letter-spacing:-.065em;}
+}
+</style>
+<link rel="stylesheet" href="mobile.css"><link rel="stylesheet" href="assets/shop.css"></head>
+<body>
+<div class="noise"></div>
+<div class="orb a"></div><div class="orb b"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <span class="brand-image"><img src="assets/zickoh-logo.webp" alt="" width="679" height="681"></span><span>ZICKOH</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">メニュー ☰</button><nav id="site-menu">
+      <a href="products.html">PRODUCTS</a>
+      <a href="ZICKOHオーダーメイド.html#order">CUSTOM ORDER</a>
+      <a href="#about">ABOUT</a>
+      <a href="ZICKOHオーダーメイド.html#faq">FAQ</a>
+      <a href="contact.html">CONTACT</a>
+      <a class="nav-cta" href="ZICKOHオーダーメイド.html#order">ORDER NOW →</a>
+    </nav>
+  </div>
+</header><div class="preview-banner">販売準備中｜このサイトでは注文・決済はまだ受け付けていません。</div>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">ZICKOH — MAKE WHAT YOU LOVE</div>
+        <h1>好きを、<br><span class="gradient">形にする。</span></h1>
+        <p class="hero-copy">
+          ZICKOHは、好きなものを「見るだけ」で終わらせず、<br>
+          毎日使えるプロダクトへ変えていくブランドです。<br>
+          オリジナルプロダクトと、あなたのためのオーダーメイドを。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="ZICKOHオーダーメイド.html#order">オーダーメイドを作る <span>→</span></a>
+          <a class="btn btn-light" href="products.html">ZICKOHの商品を見る</a>
+        </div>
+        <div class="hero-note">YOUR DESIGN. YOUR DESK. YOUR ZICKOH.</div>
+      </div>
+      <div class="visual" aria-label="ZICKOH glass mousepad visual">
+        <div class="glass"></div>
+        <div class="floating-label label-one">GLASS MOUSEPAD</div>
+        <div class="floating-label label-two">ONE OF ONE</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="custom">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">CHOOSE YOUR WAY</div>
+          <h2>あなたの「好き」を<br>ここから。</h2>
+        </div>
+        <p>
+          ZICKOHでは、完成したプロダクトを選ぶことも、
+          自分だけのデザインを形にすることもできます。
+        </p>
+      </div>
+
+      <div class="routes">
+        <a class="route route-dark" href="ZICKOHオーダーメイド.html#order">
+          <div>
+            <div class="route-label">CUSTOM ORDER</div>
+            <h3>好きなイラストを、<br>ガラスマウスパッドに。</h3>
+            <p>
+              あなたが使用する権利を持つイラストや画像を使って、
+              世界にひとつだけのガラスマウスパッドを制作します。
+            </p>
+            <span class="route-btn">オーダーメイドを注文する <span class="arrow">→</span></span>
+          </div>
+          <div class="route-art"></div>
+        </a>
+
+        <a class="route" href="products.html">
+          <div>
+            <div class="route-label">ZICKOH PRODUCTS</div>
+            <h3>ZICKOHがつくる、<br>オリジナルプロダクト。</h3>
+            <p>
+              ZICKOH独自のアイデアから生まれるプロダクトを展開。
+              今後も「面白いもの」を形にしていきます。
+            </p>
+            <span class="route-btn">商品一覧を見る <span class="arrow">→</span></span>
+          </div>
+          <div class="route-art"></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">PRODUCTS</div>
+          <h2>ZICKOH PRODUCTS</h2>
+        </div>
+        <p>
+          ZICKOHが企画・制作するプロダクト。
+          オーダーメイドから、今後登場するオリジナル商品まで。
+        </p>
+      </div>
+
+      <div class="products">
+        <a class="product" href="ZICKOHオーダーメイド.html#order">
+          <div class="product-image"><div class="mini-glass"></div></div>
+          <div class="product-info">
+            <div class="product-tag">CUSTOM / GLASS</div>
+            <h3>オーダーメイド ガラスマウスパッド</h3>
+            <p>初速の軽さと鮮明な印刷にこだわった一枚。21,980円（税込）。沖縄・離島は追加送料。</p>
+            <span class="product-link">詳細・注文を見る →</span>
+          </div>
+        </a>
+
+        <a class="product" href="products.html">
+          <div class="product-image"><div class="mini-glass"></div></div>
+          <div class="product-info">
+            <div class="product-tag">ZICKOH ORIGINAL</div>
+            <h3>MAYU</h3>
+            <p>固定デザインの受注生産モデル。450 × 400 × 3mm／17,980円（税込）。</p>
+            <span class="product-link">商品を見る →</span>
+          </div>
+        </a>
+
+        <a class="product" href="collaboration-detail.html">
+          <div class="product-image"><div class="mini-glass"></div></div>
+          <div class="product-info">
+            <div class="product-tag">NEW PROJECT</div>
+            <h3>新しい「好き」の形</h3>
+            <p>新商品やクリエイターとのコラボレーションを企画中です。</p>
+            <span class="product-link">COMING SOON →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="about">
+    <div class="wrap story-grid">
+      <div>
+        <div class="eyebrow">ABOUT ZICKOH</div>
+        <h2>「好き」を<br><span class="gradient">もっと近くに。</span></h2>
+        <p>
+          好きなイラスト、好きなゲーム、好きなクリエイター。<br>
+          それぞれの「好き」には、毎日を少し変える力があります。
+        </p>
+        <p>
+          ZICKOHは、その気持ちをプロダクトという形にして、
+          デスクや日常の中へ届けます。
+        </p>
+      </div>
+      <div class="story-card">
+        <div class="eyebrow">OUR IDEA</div>
+        <div class="story-big">MAKE<br>WHAT<br>YOU LOVE.</div>
+        <div class="story-small">
+          好きを形にする。<br>
+          見るだけではなく、使う。飾る。共有する。<br>
+          ZICKOHは、そのためのプロダクトをつくります。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <div class="eyebrow">START HERE</div>
+      <h2>あなたの「好き」を、<br><span class="gradient">デスクへ。</span></h2>
+      <p>オリジナル商品を見る。<br>それとも、自分だけの一枚をつくる。</p>
+      <div class="final-actions">
+        <a class="btn btn-dark" href="products.html">ZICKOHのMAYUを見る →</a>
+        <a class="btn btn-light" href="ZICKOHオーダーメイド.html#order">ガラスマウスパッドを注文する →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-image"><img src="assets/zickoh-logo.webp" alt="" width="679" height="681"></span><span>ZICKOH</span></div>
+        <p>Your Design, Your Shape.<br>好きを形にする。</p>
+      </div>
+      <div class="footer-links">
+        <a href="products.html">Products</a>
+        <a href="ZICKOHオーダーメイド.html#order">Custom Order</a>
+        <a href="#about">About</a>
+        <a href="ZICKOHオーダーメイド.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="commerce.html">特定商取引法に基づく表記</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 ZICKOH</div>
+  </div>
+</footer>
+<script src="mobile.js"></script></body>
+</html>
